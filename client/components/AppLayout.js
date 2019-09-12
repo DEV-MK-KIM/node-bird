@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { Menu, Input, Icon, Row, Col, Card, Avatar } from 'antd';
 import LoginForm from '../components/LoginForm';
+import UserProfile from '../components/UserProfile';
 
 const { Search } = Input;
 const dummy = {
@@ -36,33 +37,10 @@ const AppLayout = ({ children }) => (
 
     {/* Body Column */}
 
-    <Row>
-      <Col xs={24} md={6}>
+    <Row gutter={10}>
+      <Col xs={24} md={6} style={{padding:10}}>
         {dummy.isLoggedIn ? (
-          <Card
-            actions={[
-              <div key="twit">
-                Tweets
-                <br />
-                {dummy.Post.length}
-              </div>,
-              <div key="following">
-                Following
-                <br />
-                {dummy.Following.length}
-              </div>,
-              <div key="follower">
-                Followers
-                <br />
-                {dummy.Followers.length}
-              </div>
-            ]}
-          >
-            <Card.Meta
-              avatar={<Avatar>{dummy.nickname[0]}</Avatar>}
-              title={dummy.nickname}
-            />
-          </Card>
+          <UserProfile />
         ) : (
           <LoginForm />
         )}
